@@ -2,7 +2,7 @@
 
 :root {
   --primary: #282f30;
-  --secondary: #21d07a;
+  --secondary: #21a7d0;
   --white: #fff;
 }
 
@@ -58,7 +58,7 @@ body {
 }
 
 .btn:hover {
-  background-color: #1aa762;
+  background-color: #1a52a7;
   opacity: 1;
   cursor: pointer;
 }
@@ -253,13 +253,13 @@ header .nav-links li:last-child {
 
 .movie-card .inner-card-controls {
   display: inline;
-  background-color: red;
+  background-color: rgb(0, 102, 255);
   position: absolute;
   bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: rgba(0, 0, 0, 0.8);
-  border-radius: 5px;
+  border-radius: 10px;
   padding: 3px;
   opacity: 0;
   transition: all 0.3s ease;
@@ -288,4 +288,76 @@ header .nav-links li:last-child {
   color: #c4c4c4;
   font-size: 3rem;
   text-align: center;
+}
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #1a212b;
+
+  overflow-y: scroll;
+}
+
+.popup .content {
+  display: block;
+  width: 100%;
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 25px;
+
+  color: #fff;
+}
+
+.popup .content h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.popup .content h2 span {
+  font-weight: 300;
+  font-size: 20px;
+}
+
+.popup .content .rating {
+  margin-bottom: 30px;
+}
+
+.popup .content .plot {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0px -15px 30px;
+}
+
+.popup .content .plot img {
+  flex: 1 1 20%;
+  max-width: 300px;
+  padding: 0px 15px;
+}
+
+.popup .content .plot p {
+  flex: 1 1 50%;
+  padding: 15px;
+}
+
+.popup .content .close {
+  display: inline-block;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 700;
+
+  background: #4484C4;
+  color: #FFF;
+  border-radius: 8px;
+  border: none;
+  appearance: none;
+  cursor: pointer;
+
+  transition: 0.4s ease-out;
+}
+
+.popup .content .close:hover {
+  background: #223343;
 }

@@ -1,5 +1,7 @@
 import React, {useContext} from 'react'
 import {GlobalContext} from '../context/GlobalState';
+import Movie from './Movie';
+import Popup from './Popup';
 
 export const ResultCard = ({movie}) => {
     const {
@@ -17,15 +19,28 @@ export const ResultCard = ({movie}) => {
 
     const watchedDisabled = storedMovieWatched ? true : false;
 
+    // adding popup for movie
+    // const openPopup = id => {
+    //     axios(`https://api.themoviedb.org/3/search/movie?api_key=${process.env.REACT_APP_TMDB_KEY}` + "&i=" + id).then(({ data }) => {
+    //         let movie = data;
+
+    //         setState()
+    //     })
+    // }
+
+    //const MovieInfo = ({ image, movieId, clickable})
+
     return (
         <div className="result-card">
             <div className="poster-wrapper">
                 {movie.poster_path ? (
                     <img src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`} 
-                    alt={`${movie.title} Poster`}/>
+                    alt={`${movie.title} Poster`}
+                    link={Popup}/>
                 ) : (
                     <div className="filler-poster"></div>
                 )}
+                
             </div>
 
             <div className="info">
