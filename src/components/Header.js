@@ -7,14 +7,12 @@ import "../App.css";
 function ProfileContent() {
     const { instance, accounts } = useMsal();
     const username = accounts[0] && accounts[0].name;
-    fetch(`https://not-pirate-bay.azurewebsites.net/user/movie_list/${username}`)
+    const name = accounts[0] && accounts[0].username;
+    fetch(`http://not-pirate-bay.azurewebsites.net/user/movie_list/${name}`)
+    
         .then((res) => res.json())
         .then(data => {
-            if (!data.errors) { // checking for errors
-                console.log("error");
-            } else {
-                console.log(data); // no results
-            }
+            console.log(data);
         });
 
     return (
