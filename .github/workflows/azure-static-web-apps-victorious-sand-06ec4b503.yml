@@ -19,7 +19,7 @@ jobs:
       - name: Building web app
         uses: azure/appservice-build@v2
         with:
-          platform: Node
+          platform: nodejs
           source-directory: '.'
           output-directory: 'build'
 
