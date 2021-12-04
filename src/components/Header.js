@@ -1,18 +1,20 @@
 
 import { Link } from 'react-router-dom'; //move around and create navlinks
 import { PageLayout } from './PageLayout';
-import React, { useState } from "react";
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
-import { loginRequest } from "../authConfig";
-import Button from "react-bootstrap/Button";
-import { ProfileData } from "./ProfileData";
-import { callMsGraph } from "../graph";
 
 function ProfileContent() {
     const { instance, accounts } = useMsal();
-    const [graphData, setGraphData] = useState(null);
-
     const username = accounts[0] && accounts[0].username;
+    fetch(`https://not-pirate-bay.azurewebsites.net/user/movie_list/${username}`)
+        .then((res) => res.json())
+        .then(data => {
+            if(!data.errors) { // checking for errors
+               console.log("error");
+            } else {
+                console.log(data); // no results
+            }
+        });
 
     return (
 
