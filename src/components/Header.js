@@ -1,5 +1,25 @@
-import React from 'react';
+
 import { Link } from 'react-router-dom'; //move around and create navlinks
+import { PageLayout } from './PageLayout';
+import React, { useState } from "react";
+import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
+import { loginRequest } from "../authConfig";
+import Button from "react-bootstrap/Button";
+import { ProfileData } from "./ProfileData";
+import { callMsGraph } from "../graph";
+
+function ProfileContent() {
+    const { instance, accounts } = useMsal();
+    const [graphData, setGraphData] = useState(null);
+
+    const username = accounts[0] && accounts[0].username;
+
+    return (
+
+        <h5 className="card-title">Welcome {username}</h5>
+
+    );
+};
 
 export const Header = () => {
     return (
@@ -20,9 +40,17 @@ export const Header = () => {
                         </li>
 
                         <li>
-                            <Link to="/add" className="btn">
-                                Add favorite
-                            </Link>
+                            <div>
+                                <span><PageLayout>
+
+                                </PageLayout></span>
+                                <span id="userDispaly"><AuthenticatedTemplate>
+                                    <ProfileContent />
+                                </AuthenticatedTemplate>
+                                <UnauthenticatedTemplate>
+                                </UnauthenticatedTemplate></span>
+                            </div>
+
                         </li>
                     </ul>
                 </div>
