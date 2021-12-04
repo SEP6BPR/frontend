@@ -8,6 +8,7 @@ import "./lib/font-awesome/css/all.min.css";
 import { GlobalProvider } from "./context/GlobalState";
 import Movie from "./components/Movie";
 
+
 function App() {
   return (
     <GlobalProvider>
@@ -34,6 +35,7 @@ function App() {
         </Switch>
       </Router>
     </GlobalProvider>
+    
   );
 }
 
