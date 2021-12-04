@@ -2,15 +2,16 @@
 import { Link } from 'react-router-dom'; //move around and create navlinks
 import { PageLayout } from './PageLayout';
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
+import "../App.css"; 
 
 function ProfileContent() {
     const { instance, accounts } = useMsal();
-    const username = accounts[0] && accounts[0].username;
+    const username = accounts[0] && accounts[0].name;
     fetch(`https://not-pirate-bay.azurewebsites.net/user/movie_list/${username}`)
         .then((res) => res.json())
         .then(data => {
-            if(!data.errors) { // checking for errors
-               console.log("error");
+            if (!data.errors) { // checking for errors
+                console.log("error");
             } else {
                 console.log(data); // no results
             }
@@ -18,7 +19,7 @@ function ProfileContent() {
 
     return (
 
-        <h5 className="card-title">Welcome {username}</h5>
+        <h5 id="username"> {username}</h5>
 
     );
 };
@@ -29,7 +30,7 @@ export const Header = () => {
             <div className="container">
                 <div className="inner-content">
                     <div className="brand">
-                        <Link to="/">(NOT) PiratBay</Link>
+                        <Link to="/Add">(NOT) PiratBay</Link>
                     </div>
 
                     <ul className="nav-links">
@@ -40,19 +41,18 @@ export const Header = () => {
                         <li>
                             <Link to="/watched">Watched</Link>
                         </li>
-
+                        <span id="userDispaly">
+                            <AuthenticatedTemplate>
+                                <ProfileContent/>
+                            </AuthenticatedTemplate>
+                            <UnauthenticatedTemplate>
+                            </UnauthenticatedTemplate>
+                        </span>
                         <li>
                             <div>
                                 <span><PageLayout>
-
                                 </PageLayout></span>
-                                <span id="userDispaly"><AuthenticatedTemplate>
-                                    <ProfileContent />
-                                </AuthenticatedTemplate>
-                                <UnauthenticatedTemplate>
-                                </UnauthenticatedTemplate></span>
                             </div>
-
                         </li>
                     </ul>
                 </div>

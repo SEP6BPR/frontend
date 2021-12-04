@@ -289,3 +289,11 @@ header .nav-links li:last-child {
   font-size: 3rem;
   text-align: center;
 }
+
+#username{
+  color: #fffafa;
+  text-align: center;
+  padding: 4%;
+  border-radius: 5px;
+  font-size: 1rem;
+}
