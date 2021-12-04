@@ -290,6 +290,8 @@ header .nav-links li:last-child {
   text-align: center;
 }
 
+/* Popup style */
+
 .popup {
   position: fixed;
   top: 0;

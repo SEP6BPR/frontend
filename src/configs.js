@@ -5,6 +5,10 @@ const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-U
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
 
 const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
+const IMAGE_300 = 'http://image.tmdb.org/t/p/w300';
+const IMAGE_500 = 'http://image.tmdb.org/t/p/w500';
+const UNAVAILABLE = 'https://movienewz.com/img/films/poster-holder.jpg';
+
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';
 // w92, w154, w185, w342, w500, w780, original
@@ -18,7 +22,7 @@ export {
     IMAGE_BASE_URL,
     BACKDROP_SIZE,
     POSTER_SIZE,
-    REQUEST_TOKEN_URL,
-    LOGIN_URL,
-    SESSION_ID_URL,
+    IMAGE_300,
+    IMAGE_500,
+    UNAVAILABLE,
   };

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
 import { ResultCard } from "./ResultCard";
+import SingleContent from "./TrendingMovies/SingleContent";
 
 export const Add = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
-  // const [state, setState] = useState({
-  //   selected: {}
-  // });
+  const [content, setContent] = useState([]);
 
   const onChange = (e) => {
     e.preventDefault();
@@ -26,6 +26,21 @@ export const Add = () => {
         }
       });
   };
+
+  // trending movies on the main page
+  const fetchTrendingMovies = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}`
+    );
+    // console.log(data);
+
+    setContent(data.results);
+  };
+
+  useEffect(() => {
+    fetchTrendingMovies();
+    
+  }, [])
 
   return (
     <div className="add-page">
@@ -49,9 +64,24 @@ export const Add = () => {
               ))}
             </ul>
           )}
-
-          
         </div>
+      </div>
+
+      <div className="trending">
+        <h2>Trending Movies</h2>
+          {
+            content && content.map((c) => (
+              <SingleContent 
+              key={c.id} 
+              id={c.id} 
+              poster={c.poster_path} 
+              title={c.title || c.name} 
+              date={c.first_air_date || c.release_date}
+              media_type={c.media_type}
+              vote_average={c.vote_average}
+              />
+            ))
+          }
       </div>
     </div>
   );
