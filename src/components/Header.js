@@ -28,7 +28,7 @@ export const Header = () => {
             <div className="container">
                 <div className="inner-content">
                     <div className="brand">
-                        <Link to="/Add">(NOT) PiratBay</Link>
+                        <Link to="/Add" onClick={() => window.scroll(0, 0)}>(NOT) PirateBay</Link>
                     </div>
 
                     <ul className="nav-links">

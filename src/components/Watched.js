@@ -1,6 +1,8 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { MovieCard } from "./MovieCard";
+import "./TrendingMovies/Sc.css";
+import SingleContent from "./TrendingMovies/SingleContent";
 
 export const Watched = () => {
   const { watched } = useContext(GlobalContext);
@@ -17,17 +19,18 @@ export const Watched = () => {
           </div>
 
           {watched.length > 0 ? (
-            <div className="movie-grid">
+            
+            <div className="media">
               {watched.map((movie) => (
                 <MovieCard movie={movie} type="watched" />
               ))}
             </div>
+            
           ) : (
             <h2 className="no-movies">No movies in your list</h2>
           )}
         </div>
       </div>
-      );
     </div>
   );
 };

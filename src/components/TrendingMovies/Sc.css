@@ -1,41 +1,40 @@
 .media {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    padding: 3px;
-    margin: 5px 0;
-    background-color: #4484c488;
-    border-radius: 1px;
-    position: relative;
-    font-family: "Montserrat", sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  padding: 3px;
+  margin: 5px 0;
+  background-color:#F5F5D0;
+  border-radius: 5%;
+  position: relative;
+  font-family: "Montserrat", sans-serif;
+}
+
+.media:hover {
+  background-color: white;
+  color: black;
+}
+
+@media (max-width: 550px) {
+  .media {
+    width: 46%;
   }
-  
-  .media:hover {
-    background-color: white;
-    color: black;
-  }
-  
-  @media (max-width: 550px) {
-    .media {
-      width: 46%;
-    }
-  }
-  
-  .poster {
-    border-radius: 1px;
-  }
-  
-  .title {
-    width: 100%;
-    text-align: center;
-    font-size: 17px;
-    padding: 3px 0;
-  }
-  
-  .subTitle {
-    display: flex;
-    justify-content: space-between;
-    padding-bottom: 2px;
-    padding: 0 2px;
-    padding-bottom: 2px;
-  }
+}
+
+.poster {
+  border-radius: 5%;
+}
+
+.title {
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  padding: 3px 0;
+}
+
+.subTitle {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 2px;
+  padding: 0 2px;
+}

@@ -3,6 +3,7 @@ import { GlobalContext } from "../context/GlobalState";
 import Movie from "./Movie";
 import Popup from "./Popup";
 
+// result card from search
 export const ResultCard = ({ movie, media_type }) => {
   const { addMovieToWatchlist, addMovieToWatched, watchlist, watched } =
     useContext(GlobalContext);
@@ -31,28 +32,29 @@ export const ResultCard = ({ movie, media_type }) => {
 
   return (
     <div className="result-card">
-      <div className="poster-wrapper">
+      <div className="media">
         {movie.poster_path ? (
           <img
+            className="poster"
             src={`https://image.tmdb.org/t/p/w200${movie.poster_path}`}
             alt={`${movie.title} Poster`}
           />
         ) : (
           <div className="filler-poster"></div>
         )}
+
+        <b className="title">{movie.title}</b>
+
+        <span className="subTitle">
+          {media_type === "tv" ? "TV Series" : "Movie"}
+          <span className="subTitle">
+            {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
+          </span>
+        </span>
       </div>
 
       <div className="info">
-        <div className="header">
-          <h3 className="title">{movie.title}</h3>
-          <h4 className="release-date">
-            {movie.release_date ? movie.release_date.substring(0, 4) : "-"}
-            <span className="subTitle">
-            {media_type === "tv" ? "TV Series" : "Movie"}
-            </span>
-          </h4>
-          
-        </div>
+        <div className="header"></div>
 
         <div className="controls">
           <button
