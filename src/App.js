@@ -8,6 +8,7 @@ import './lib/font-awesome/css/all.min.css';
 import {GlobalProvider} from './context/GlobalState';
 
 
+
 function App() {
   return (
     <GlobalProvider>

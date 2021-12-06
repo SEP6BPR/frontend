@@ -29,6 +29,7 @@ export const MovieControls = ({movie, type}) => {
                         <i className="fa-fw fa fa-times"></i>
                     </button>
                 </>
+                
             )
             }
         </div>

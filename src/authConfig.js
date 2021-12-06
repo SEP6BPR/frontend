@@ -1,7 +1,6 @@
 export const msalConfig = {
     auth: {
       clientId: "acb9f496-0d22-4f81-8475-f399bd52f9c2",
-      authority: "https://login.microsoftonline.com",
       /*redirectUri: "https://notpiratebay.azurewebsites.net/",*/
       redirectUri: "http://localhost:3000",
     },
