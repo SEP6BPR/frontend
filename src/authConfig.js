@@ -1,9 +1,9 @@
 export const msalConfig = {
     auth: {
-      clientId: "de9130c0-8045-412d-bfe1-6e333c3c44f4",
-      authority: "https://login.microsoftonline.com/7901565c-95f2-4d34-bca7-ee89bd8b39ff", // This is a URL (e.g. https://login.microsoftonline.com/{your tenant ID})
+      clientId: "acb9f496-0d22-4f81-8475-f399bd52f9c2",
+      authority: "https://login.microsoftonline.com",
       /*redirectUri: "https://notpiratebay.azurewebsites.net/",*/
-      redirectUri: "http://localhost:3000/",
+      redirectUri: "http://localhost:3000",
     },
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
