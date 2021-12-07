@@ -48,6 +48,20 @@ jobs:
       run: |
         echo '{ script: "serve", env: { PM2_SERVE_SPA: "true", PM2_SERVE_HOMEPAGE: "/index.html" } }' >> build/process.json
     
+    #- name: Azure Login
+    #  uses: Azure/login@v1.4.2
+    #  with:
+        # ClientId of the Azure Service principal created.
+    #    client-id: ${{ secrets.AZURE_CLIENT_ID }}
+    #    # TenantId of the Azure Service principal created.
+    #    tenant-id: ${{ secrets.AZURE_TENANT_ID }}
+        # Azure subscriptionId
+    #    subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+
+   # - run: |
+    #    az webapp list --query "[?state=='Running']"
+  
+    
     - name: 'Deploy to Azure WebApp'
       uses: azure/webapps-deploy@v2
       with:
