@@ -1,13 +1,12 @@
 export const msalConfig = {
     auth: {
       clientId: "acb9f496-0d22-4f81-8475-f399bd52f9c2",
-      authority: "https://login.microsoftonline.com",
-      /*redirectUri: "https://notpiratebay.azurewebsites.net/",*/
-      redirectUri: "http://localhost:3000",
+           /*redirectUri: "https://notpiratebay.azurewebsites.net/",*/
+      redirectUri: "http://localhost:3000/",
     },
     cache: {
       cacheLocation: "sessionStorage", // This configures where your cache will be stored
-      storeAuthStateInCookie: false, // Set this to "true" if you are having issues on IE11 or Edge
+      storeAuthStateInCookie: true, // Set this to "true" if you are having issues on IE11 or Edge
     }
   };
   
