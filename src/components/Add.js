@@ -31,7 +31,7 @@ export const Add = () => {
   };
 
   // trending movies on the main page
-  const fetchTrendingMovies = async () => {
+ const fetchTrendingMovies = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
     );
@@ -42,7 +42,7 @@ export const Add = () => {
 
   useEffect(() => {
     fetchTrendingMovies();
-  }, [page]);
+  });
 
   return (
     <div className="add-page">
@@ -56,7 +56,7 @@ export const Add = () => {
               onChange={onChange}
             />
           </div>
-          
+
           {results.length > 0 && (
             <ul className="results">
               {results.map((movie) => (
@@ -83,7 +83,7 @@ export const Add = () => {
             />
           ))}
       </div>
-      <PagePagination setPage={setPage}/>
+      <PagePagination setPage={setPage} />
     </div>
   );
 };

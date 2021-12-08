@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
-import Movie from "./Movie";
-import Popup from "./Popup";
+//import Movie from "./Movie";
+//import Popup from "./Popup";
 
 // result card from search
 export const ResultCard = ({ movie, media_type }) => {
