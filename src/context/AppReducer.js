@@ -1,7 +1,5 @@
 // function that return state data (redux)
-
-// eslint-disable-next-line import/no-anonymous-default-export
-export default (state, action) => {
+const reducer = function(state, action) {
     switch(action.type) {
         case "ADD_MOVIE_TO_WATCHLIST":
         return {
@@ -36,3 +34,4 @@ export default (state, action) => {
         return state;
     }
 };
+export default reducer;
