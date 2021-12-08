@@ -1,30 +1,19 @@
-import { Link } from 'react-router-dom';
-import "../App.css";
+
+import { Link } from 'react-router-dom'; //move around and create navlinks
 import { PageLayout } from './PageLayout';
+import "../App.css";
 
 export const Header = () => {
-    return (< header >
-        <
-        div className="container" >
-            <
-        div className="inner-content" >
-                <
-        div className="brand" >
-                    <
-        Link to="./Add" > (NOT) PiratBay < /Link> < /
-        div >
-
-                        <
-        ul className="nav-links" >
-                            <
-                                li >
-                                <
-                                    PageLayout />
-                                <
-        /li> < /
-        ul > <
-        /div> </div >
-                            <
-        /header>
-                            )
+    return (
+        <header>
+            <div className="container">
+                <div className="inner-content">
+                    <Link to="/Add" onClick={() => window.scroll(0, 0)}>(NOT) PirateBay</Link>
+                    <table>
+                        <th><PageLayout /></th>
+                    </table>
+                </div>
+            </div>
+        </header>
+    )
 }
