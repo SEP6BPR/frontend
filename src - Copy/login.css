@@ -1,0 +1,50 @@
+span{
+    size: 50%;
+}
+
+#ms-button{
+    text-align: right;
+    position: fixed;
+    margin: auto;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100px; /* width of button */
+    height: 30px; /* height of button */
+}
+#si-ms{
+    font-size: 1.5vw;
+    font-family: 'Roboto', sans-serif;
+    position: relative;
+    margin-top: 100%;
+    width: 50%;
+    z-index: 1;
+}
+#authenticationButton{
+    background-image: url(./azure/ms-symbollockup_signin_light.svg);
+    border: none;
+    width: 18vw;
+    height: 3vw;
+    background-position:relative;
+    background-color: transparent;
+    text-align: right;
+    background-size: fill;
+}
+#authenticationButtonOut{
+    background-image: url(azure/6388820.png);
+    background-repeat: no-repeat;
+    border: none;
+    width: 3vw;
+    height: 3vw;
+    background-size:contain;
+    background-color: rgb(212, 158, 158);
+    text-align: right;
+    border-radius: 35%;
+    z-index: 99999;
+    
+}  
+
+body{
+    background-color: #925656;
+}

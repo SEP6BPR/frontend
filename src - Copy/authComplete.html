@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+ 
+<head>
+    <script src="dist/authComplete.js"></script> 
+    <script>
+        ReactLoginMS.authComplete();
+    </script> 
+</head>
+<body>
+    
+</body>
+</html>
+<Router>
+    <Route path="/watched">
+  <Watched />
+</Route>
+<Route exact path="/">
+  <Watchlist />
+</Route>
+<Route path="/add">
+  <Add />
+</Route>
+</Router>
