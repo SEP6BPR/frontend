@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
-import { ResultCard } from "./ResultCard";
+
 import SingleContent from "./TrendingMovies/SingleContent";
 import "./TrendingMovies/Trending.css";
 import { PagePagination } from "./TrendingMovies/PagePagination";
@@ -61,7 +61,7 @@ export const Add = () => {
             <ul className="results">
               {results.map((movie) => (
                 <li key={movie.id}>
-                  <ResultCard movie={movie} />
+                
                 </li>
               ))}
             </ul>

@@ -1,3 +1,4 @@
+/*
 import { SelectAllRounded } from "@material-ui/icons";
 import React from "react";
 
@@ -5,7 +6,7 @@ export const Popup = (props) => {
   return;
   <section className="popup">
     <div className="content">
-      {/* <h2>
+      {<h2>
         {selected.Title} <span>({selected.year})</span>
       </h2>
       <p className="rating">Rating: {selected.imdbRating}</p>
@@ -15,7 +16,7 @@ export const Popup = (props) => {
       </div>
       <button className="close" onClick={closePopup}>
         Close
-      </button> */}
+      </button>}
 
       {props.children}
     </div>
@@ -23,3 +24,4 @@ export const Popup = (props) => {
 };
 
 export default Popup;
+*/

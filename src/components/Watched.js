@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+/*import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { MovieCard } from "./MovieCard";
 import "./TrendingMovies/Sc.css";
@@ -34,3 +34,4 @@ export const Watched = () => {
     </div>
   );
 };
+*/
