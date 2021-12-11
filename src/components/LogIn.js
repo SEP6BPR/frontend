@@ -2,13 +2,13 @@
 import { useMsal } from "@azure/msal-react";
 import '../App.css';
 
-export const LogedIn = () => {
+export const LogIn = () => {
     function ProfileContent() {
         const { accounts } = useMsal();
         const name = accounts[0] && accounts[0].name;
         const username = accounts[0] && accounts[0].username;
-
-        fetch(`https://not-pirate-bay.azurewebsites.net/user/register/${username}`, { method: "POST"})
+        console.log(username)
+        fetch(`https://not-pirate-bay.azurewebsites.net/user/${username}/register`, { method: "POST"})
         .then(res => { 
             if (res.ok)
               return console.log(res)
@@ -16,7 +16,7 @@ export const LogedIn = () => {
               return Promise.reject(res.statusText) 
           });
           
-        
+        console.log(username)
         return (
            <p id="username">{name}</p>
         );
@@ -26,4 +26,4 @@ export const LogedIn = () => {
     )
 }
 
-export default LogedIn
+export default LogIn
