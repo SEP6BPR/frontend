@@ -1,30 +1,20 @@
-import React, { useContext } from "react";
-import { GlobalContext } from "../context/GlobalState";
+import React from "react";
 import { useState } from "react";
 import "./TrendingMovies/Sc.css"
 import axios from "axios";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import SingleContent from "./TrendingMovies/SingleContent";
-import { DropDownListComponent } from '@syncfusion/ej2-react-dropdowns';
-import { DataManager, ODataV4Adaptor, Query } from '@syncfusion/ej2-data';
+import ListOfLists from "./ListOfLists";
+
 
 export const Watchlist = () => {
 
-  const { watchlist } = useContext(GlobalContext);
   const [name, setName] = useState("");
-  const [content, setContent] = useState([]);
+  const [content] = useState([]);
   const { accounts } = useMsal();
   const username = accounts[0] && accounts[0].username;
   const isAuthenticated = useIsAuthenticated();
-  const listsData = new DataManager(
-    {
-      adaptor: new ODataV4Adaptor,
-      crossDomain: true,
-      url: `https://not-pirate-bay.azurewebsites.net/user/${username}/lists`
-    }
-  );
-  const iquery = new Query().from('list_ids').select(['id']);
-  const field = {text:"list_ids"}
+
   const handleInput = (e) => {
     setName(e.target.value);
   }
@@ -33,10 +23,12 @@ export const Watchlist = () => {
     const { data } = await axios.get(
       `https://not-pirate-bay.azurewebsites.net/user/${username}/lists`
     );
-    dataSource.push(data.results)
+    dataSource = data.list_ids;
+    console.log(dataSource);
   };
+
   const createNewList = (e) => {
-    fetch(`https://not-pirate-bay.azurewebsites.net/user/${username}/creat_list/${name}`, { method: "POST" })
+    fetch(`https://not-pirate-bay.azurewebsites.net/user/${username}/create_list/?list_name=${name}`, { method: "POST" })
   }
   return (
     <div className="movie-page">
@@ -44,11 +36,9 @@ export const Watchlist = () => {
         <div className="header">
           {isAuthenticated ?
             <>
+              
               <span>
-                <button onClick={fetchLists}>update lists</button>
-              </span>
-              <span>
-                <DropDownListComponent id="ListsMenu" dataSource={listsData} fields={field} placeholder="select a list" popupHeight="220px" />
+                <ListOfLists/>
               </span>
               <span>
                 <input type="text"
@@ -62,9 +52,9 @@ export const Watchlist = () => {
                   add new play list
                 </button>
               </span>
-              <dive>
+              <div>
 
-              </dive>
+              </div>
             </>
             :
             <p>you must be loged in</p>
