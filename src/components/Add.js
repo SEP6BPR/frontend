@@ -9,6 +9,7 @@ export const Add = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [content, setContent] = useState([]);
+  const [recomended, setRecomended] = useState([]);
   const [page, setPage] = useState(1);
 
   const onChange = (e) => {
@@ -48,8 +49,15 @@ export const Add = () => {
 
     setContent(data.results);
   };
+  // Recomended movies
+  const fetchRecomendedMovies = async () => {
+    const { data } = await axios.get(
+      `https://api.themoviedb.org/3/recomended/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
+    );
+    // console.log(data);
 
-  
+    setRecomended(data.results);
+  };
 
   useEffect(() => {
     fetchTrendingMovies();
@@ -68,7 +76,7 @@ export const Add = () => {
               onChange={onChange}
             />
           </div>
-          
+
           {results.length > 0 && (
             <ul className="results">
               {results.map((movie) => (
@@ -79,6 +87,21 @@ export const Add = () => {
             </ul>
           )}
         </div>
+      </div>
+      <h2>Recomended Movies</h2>
+      <div className="trending">
+        {recomended &&
+          recomended.map((c) => (
+            <MovieContent
+              key={c.id}
+              id={c.id}
+              poster={c.poster_path}
+              title={c.title || c.name}
+              date={c.first_air_date || c.release_date}
+              media_type={c.media_type}
+              vote_average={c.vote_average}
+            />
+          ))}
       </div>
       <h2>Trending Movies</h2>
       <div className="trending">
@@ -95,7 +118,7 @@ export const Add = () => {
             />
           ))}
       </div>
-      <PagePagination setPage={setPage}/>
+      <PagePagination setPage={setPage} />
     </div>
   );
 };
