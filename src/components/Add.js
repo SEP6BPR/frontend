@@ -36,6 +36,15 @@ export const Add = () => {
       `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
     );
     // console.log(data);
+    
+    // for (let index = 0; index < data.results.length; index++) {
+    //   let external_id = await axios.get(`https://api.themoviedb.org/3/movie/${data.results[index].id}/external_ids?api_key=${process.env.REACT_APP_TMDB_KEY}`)
+    //   //console.log(external_id.data.imdb_id)
+    //   external_id.data.imdb_id = external_id.data.imdb_id.slice(2, external_id.data.imdb_id.length).replace(/^0+/, '')
+      
+    //   // data.results[index].id = external_id['imdb_id']
+    //   console.log(external_id.data.imdb_id)
+    // }
 
     setContent(data.results);
   };

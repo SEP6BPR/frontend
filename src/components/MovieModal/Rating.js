@@ -25,40 +25,66 @@ export default function HoverRating({ id }) {
   const { accounts } = useMsal();
   const name = accounts[0] && accounts[0].name;
 
+  const email = accounts[0] && accounts[0].username;
   const [value, setValue] = React.useState(2);
   const [hover, setHover] = React.useState(-1);
 
+  const [userId, setUserId] = useState(0);
   const [rate, setRating] = useState();
   const [comment, setComment] = useState("");
+  const [apiId, setApiId] = useState();
+
+  let fetching = async () => {
+    let external_id = await axios.get(`https://api.themoviedb.org/3/movie/${id}/external_ids?api_key=${process.env.REACT_APP_TMDB_KEY}`)
+  // console.log(external_id.data.imdb_id)
+  let apiid = external_id.data.imdb_id.slice(2, external_id.data.imdb_id.length).replace(/^0+/, '')
+  setApiId(apiid);
+  };
+  
+
   const reviewBody = {
-    "review_text": {comment},
-    "user_id": 0,
-    "user_name": {name},
-    "score": {value},
-    "movie_id": {id},
+    "review_text": comment,
+    "user_id": userId,
+    "user_name": name,
+    "score": value,
+    "movie_id": apiId,
     };
+
   const handleCommentInput = (e) => {
     setComment(e.value);
   };
 
   const handleRating = async () => {
     const { data } = await axios.get(
-      `https://not-pirate-bay.azurewebsites.net/movie/${id}/reviews`
+      `https://not-pirate-bay.azurewebsites.net/movie/${apiId}/reviews`
     );
     setRating(data);
   };
 
+  const fetchUserId = async () => {
+    const { data } = await axios.get(
+      `https://not-pirate-bay.azurewebsites.net/user/${email}/id`
+    );
+  
+    setUserId(data.user_id);
+  };
+
   const postReviews = (e) => {
-  fetch(`https://not-pirate-bay.azurewebsites.net/review/`, {method:"POST", body:JSON.stringify(reviewBody)}
+    console.log(reviewBody);
+    
+    fetch(`https://not-pirate-bay.azurewebsites.net/review/`, {method:"POST", body:reviewBody}
    );
-      
+    
   }
   // https://not-pirate-bay.azurewebsites.net/docs#/default/add_review_review__post
   // https://not-pirate-bay.azurewebsites.net/movie/${id}/reviews
   // https://not-pirate-bay.azurewebsites.net/review/
 
   useEffect(() => {
+    fetching();
     handleRating();
+    fetchUserId();
+    
   }, []);
 
   
