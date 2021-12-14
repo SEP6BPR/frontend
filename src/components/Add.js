@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ResultCard } from "./ResultCard";
-import SingleContent from "./TrendingMovies/SingleContent";
+import MovieContent from "./TrendingMovies/MovieContent";
 import "./TrendingMovies/Trending.css";
 import { PagePagination } from "./TrendingMovies/PagePagination";
 
@@ -40,9 +40,12 @@ export const Add = () => {
     setContent(data.results);
   };
 
+  
+
   useEffect(() => {
     fetchTrendingMovies();
-  }, [page]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page.data]);
 
   return (
     <div className="add-page">
@@ -72,7 +75,7 @@ export const Add = () => {
       <div className="trending">
         {content &&
           content.map((c) => (
-            <SingleContent
+            <MovieContent
               key={c.id}
               id={c.id}
               poster={c.poster_path}

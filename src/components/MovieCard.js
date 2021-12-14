@@ -1,6 +1,6 @@
 import React from "react";
 import { MovieControls } from "./MovieControls";
-import "./TrendingMovies/Sc.css"
+import "./TrendingMovies/MovieContent.css"
 
 export const MovieCard = ({ movie, type, media_type }) => {
   return (

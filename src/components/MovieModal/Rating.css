@@ -1,0 +1,29 @@
+.user_name {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2px;
+  color: rgb(88, 23, 88);
+  font-weight: bold;
+}
+
+.submit_button {
+  display: flex;
+  border: 1px solid #a9a9a9;
+  border-radius: 5px;
+  width: 30%;
+  padding: 10px 15px;
+  margin: 2px;
+  background-color: #a728c0;
+  color: #fff;
+  padding: 5px;
+  margin: 2px;
+  transition: all 0.3s ease;
+  line-height: 1.5;
+  text-transform: uppercase;
+  display: inline-block;
+  font-weight: bold;
+}
+
+.submit_button:hover {
+  color: #1d4e8d;
+}

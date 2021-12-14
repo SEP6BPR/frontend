@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { GlobalContext } from "../context/GlobalState";
 import { MovieCard } from "./MovieCard";
 import { Watched } from "./Watched";
-import "./TrendingMovies/Sc.css"
+import "./TrendingMovies/MovieContent.css"
 
 export const Watchlist = () => {
   const { watchlist } = useContext(GlobalContext);
