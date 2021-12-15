@@ -49,6 +49,7 @@ export const Add = () => {
 		console.log(data.results);
 		setContent(data.results);
 	};
+	
 	// Recomended movies
 	const fetchRecomendedMovies = async () => {
 		const { data } = await axios.get(

@@ -53,8 +53,8 @@ export default function HoverRating(props) {
 		const reviewsResponse = await axios.get(
 			`https://not-pirate-bay.azurewebsites.net/movie/${APIid}/reviews`
 		);
-		console.log(reviewsResponse.data[0].review_text)
-		setRating(reviewsResponse.data[0].review_text);
+		// console.log(reviewsResponse.data[0].review_text)
+		// setRating(reviewsResponse.data[0].review_text);
 		
 		const response  = await axios.get(
 			`https://not-pirate-bay.azurewebsites.net/user/${email}/id`

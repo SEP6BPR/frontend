@@ -61,6 +61,9 @@ export default function TransitionsModal({
 	const [video, setVideo] = useState();
 	const [movieInfo, setMovieInfo] = useState();
 	const [cast, setCast] = useState();
+	const [putToList, setPutToList] = useState();
+	const [listId, setListId] = useState();
+	const [listName, setListName] = useState();
 
 	const handleOpen = () => {
 		setOpen(true);
@@ -98,27 +101,18 @@ export default function TransitionsModal({
 		setCast(director.name);
 	};
 
-	//   // searching the name of the director
+	// put to list
+	// const fetchToList = async (e) => {
+	// 	axios.post(`https://not-pirate-bay.azurewebsites.net/add_to_list/${list_id}/movie/${id}`);	
 
-	//   console.log(response.data.crew.director);
-
-	//   const credits = response.data;
-	//   return { director: director, credits: credits };
 
 	// };
-
-	// const directors = cast.filter((member) => member.job === 'Directing');
-
-	// useEffect(() => {
-	//   axios.get(
-	//     `https://api.themoviedb.org/3/${selectedMovie}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`,
-	//   ).then((response) => setMovieInfo(response.data));
-	// }, [selectedMovie]);
 
 	useEffect(() => {
 		fetchData();
 		fetchVideo();
 		fetchCredits();
+		// fetchToList();
 	}, []);
 
 	const authenticated = useIsAuthenticated();
@@ -242,6 +236,10 @@ export default function TransitionsModal({
 											<span>
 												Director: <i>{cast}</i>
 											</span>
+										</div>
+
+										<div className="button_div">
+											<button className="button_addMovie">Add Movie To My List</button>
 										</div>
 									</div>
 									<span className="MovieModal_description">
