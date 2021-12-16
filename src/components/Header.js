@@ -1,4 +1,3 @@
-
 import { Link } from 'react-router-dom'; //move around and create navlinks
 import { PageLayout } from './PageLayout';
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";

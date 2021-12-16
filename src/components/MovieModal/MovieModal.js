@@ -3,7 +3,6 @@ import Backdrop from "@mui/material/Backdrop";
 import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
-
 import { makeStyles } from "@material-ui/core";
 import {
 	IMAGE_500,
@@ -76,7 +75,7 @@ export default function TransitionsModal({
 		const { data } = await axios.get(
 			`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
 		);
-		//console.log(data);
+		console.log(data);
 		setContent(data);
 	};
 
@@ -210,6 +209,12 @@ export default function TransitionsModal({
 										<div>
 											<span>
 												IMDB Rating: <i>{content?.vote_average}</i>
+											</span>
+										</div>
+
+										<div>
+											<span>
+												Number of votes: <i>{content?.vote_count}</i>
 											</span>
 										</div>
 

@@ -2,7 +2,6 @@ import axios from "axios";
 import React, { useState, useEffect } from "react";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
-import { Carousel } from "react-bootstrap";
 import { IMAGE_300, UNAVAILABLE, NO_PICTURE } from "../../configs";
 import "./CarouselActors.css";
 

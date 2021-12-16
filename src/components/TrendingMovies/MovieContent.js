@@ -33,6 +33,7 @@ export const MovieContent = ({
         alt={title}
       />
       <b className="title">{title}</b>
+      {/* <b className="id">{id}</b> */}
       <span className="subTitle">
         {media_type === "tv" ? "TV Series" : "Movie"}
         <span className="subTitle">{date}</span>
