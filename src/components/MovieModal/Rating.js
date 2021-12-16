@@ -46,12 +46,22 @@ export default function HoverRating(props) {
 			.replace(/^0+/, ""));
 		setApiId(APIid);
 		console.log(APIid)
-
+	
+		setRating("Loading reviews")
 		const reviewsResponse = await axios.get(
 			`https://not-pirate-bay.azurewebsites.net/movie/${APIid}/reviews`
-		);
-		console.log(reviewsResponse.data[0].review_text)
-		setRating(reviewsResponse.data[0].review_text);
+		).then(
+			(response) => {
+				console.log(response.data)
+				if (response.data.length === 0) {
+					setRating("No reviews yet")
+				}
+				else {
+					console.log(response.data[0].review_text)
+					setRating(response.data[0].review_text);
+				}
+			}
+		)
 		
 		const response  = await axios.get(
 			`https://not-pirate-bay.azurewebsites.net/user/${email}/id`
@@ -79,7 +89,9 @@ export default function HoverRating(props) {
 
 		console.log(reviewBody)
 
-		axios.post('https://not-pirate-bay.azurewebsites.net/review/', reviewBody)
+		axios.post('https://not-pirate-bay.azurewebsites.net/review/', reviewBody).then(
+			fetching()
+		)
 	};
 
 
