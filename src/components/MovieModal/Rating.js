@@ -30,7 +30,7 @@ export default function HoverRating(props) {
 	const [hover, setHover] = React.useState(-1);
 
 	const [userId, setUserId] = useState(0);
-	const [reviews] = useState();
+	const [reviews, setRating] = useState();
 	const [comment, setComment] = useState("");
 	const [APIid, setApiId] = useState();
 
@@ -46,12 +46,19 @@ export default function HoverRating(props) {
 			.replace(/^0+/, ""));
 		setApiId(APIid);
 		console.log(APIid)
+
+		const reviewsResponse = await axios.get(
+			`https://not-pirate-bay.azurewebsites.net/movie/${APIid}/reviews`
+		);
+		console.log(reviewsResponse.data[0].review_text)
+		setRating(reviewsResponse.data[0].review_text);
 		
 		const response  = await axios.get(
 			`https://not-pirate-bay.azurewebsites.net/user/${email}/id`
 		);
 		console.log(response.data.user_id)
 		setUserId(response.data.user_id);
+
 	};
 
 	
@@ -71,16 +78,10 @@ export default function HoverRating(props) {
 		};
 
 		console.log(reviewBody)
-		// fetch(`https://not-pirate-bay.azurewebsites.net/review/`, {
-		// 	method: "POST",
-		// 	body: reviewBody
-		// });
 
 		axios.post('https://not-pirate-bay.azurewebsites.net/review/', reviewBody)
 	};
-	// https://not-pirate-bay.azurewebsites.net/docs#/default/add_review_review__post
-	// https://not-pirate-bay.azurewebsites.net/movie/${id}/reviews
-	// https://not-pirate-bay.azurewebsites.net/review/
+
 
 	useEffect(() => {
 		fetching();
