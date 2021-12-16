@@ -84,7 +84,7 @@ export default function HoverRating(props) {
 
 	useEffect(() => {
 		fetching();
-	});
+	},[]);
 
 	return (
 		<>

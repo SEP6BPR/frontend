@@ -25,7 +25,7 @@ const Gallery = ({ media_type, id }) => {
 
   useEffect(() => {
     fetchCredits();
-  });
+  },[]);
 
   const items = credits?.map((c) => (
     <div className="carouselItem">
