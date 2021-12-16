@@ -1,5 +1,6 @@
 const API_URL = 'https://api.themoviedb.org/3/';
 const API_KEY = process.env.REACT_APP_TMDB_KEY;
+const AUTH_CLIENT_ID = process.env.AUTH_CLIENT_ID
 
 const SEARCH_BASE_URL = `${API_URL}search/movie?api_key=${API_KEY}&language=en-US&query=`;
 const POPULAR_BASE_URL = `${API_URL}movie/popular?api_key=${API_KEY}&language=en-US`;
@@ -23,6 +24,7 @@ export {
     POPULAR_BASE_URL,
     API_URL,
     API_KEY,
+    AUTH_CLIENT_ID,
     IMAGE_BASE_URL,
     BACKDROP_SIZE,
     POSTER_SIZE,

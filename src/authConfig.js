@@ -1,6 +1,8 @@
+import AUTH_CLIENT_ID from './configs' 
+
 export const msalConfig = {
     auth: {
-      clientId: "acb9f496-0d22-4f81-8475-f399bd52f9c2",
+      clientId: AUTH_CLIENT_ID,
       redirectUri: "https://kind-ocean-074865c03.azurestaticapps.net"
       
     },
