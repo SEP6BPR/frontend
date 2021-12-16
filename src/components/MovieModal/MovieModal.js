@@ -105,7 +105,7 @@ export default function TransitionsModal({
 		fetchVideo();
 		fetchCredits();
 		// fetchToList();
-	});
+	},[]);
 
 	return (
 		<>
