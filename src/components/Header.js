@@ -32,11 +32,7 @@ export const Header = () => {
 
                     <ul className="nav-links">
                         <li>
-                            <Link to="/">Watch List</Link>
-                        </li>
-
-                        <li>
-                            <Link to="/watched">Watched</Link>
+                            <Link to="/">Watch Lists</Link>
                         </li>
                         <span id="userDispaly">
                             <AuthenticatedTemplate>
