@@ -16,8 +16,6 @@ import "./mm.css";
 import CarouselActors from "./CarouselActors";
 import "./CarouselActors.css";
 import { Chip } from "@material-ui/core";
-import Rating from "./Rating";
-import { useMsal, useIsAuthenticated } from "@azure/msal-react";
 import HoverRating from "./Rating";
 
 const useStyles = makeStyles((Theme) => ({
@@ -48,7 +46,6 @@ export default function TransitionsModal({
 	children,
 	id,
 	media_type,
-	props,
 	i,
 	genres,
 	crew,
@@ -58,11 +55,7 @@ export default function TransitionsModal({
 	const [open, setOpen] = useState(false);
 	const [content, setContent] = useState();
 	const [video, setVideo] = useState();
-	const [movieInfo, setMovieInfo] = useState();
 	const [cast, setCast] = useState();
-	const [putToList, setPutToList] = useState();
-	const [listId, setListId] = useState();
-	const [listName, setListName] = useState();
 
 	const handleOpen = () => {
 		setOpen(true);
@@ -112,11 +105,7 @@ export default function TransitionsModal({
 		fetchVideo();
 		fetchCredits();
 		// fetchToList();
-	}, []);
-
-	const authenticated = useIsAuthenticated();
-	const { accounts } = useMsal();
-	const name = accounts[0] && accounts[0].name;
+	});
 
 	return (
 		<>
@@ -153,8 +142,6 @@ export default function TransitionsModal({
 											? `${IMAGE_300}/${content.poster_path}`
 											: UNAVAILABLE
 									}
-									alt={content.name || content.title}
-									className="MovieModal_portrait"
 								/>
 								<img
 									src={

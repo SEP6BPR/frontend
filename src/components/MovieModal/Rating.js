@@ -5,9 +5,6 @@ import StarIcon from "@mui/icons-material/Star";
 import axios from "axios";
 import { useMsal, useIsAuthenticated } from "@azure/msal-react";
 import "./Rating.css";
-import { useForm } from "react-hook-form";
-import { Add } from "../Add";
-
 
 const labels = {
 	0.5: "Useless",
@@ -33,7 +30,7 @@ export default function HoverRating(props) {
 	const [hover, setHover] = React.useState(-1);
 
 	const [userId, setUserId] = useState(0);
-	const [reviews, setRating] = useState();
+	const [reviews] = useState();
 	const [comment, setComment] = useState("");
 	const [APIid, setApiId] = useState();
 
@@ -49,12 +46,6 @@ export default function HoverRating(props) {
 			.replace(/^0+/, ""));
 		setApiId(APIid);
 		console.log(APIid)
-
-		const reviewsResponse = await axios.get(
-			`https://not-pirate-bay.azurewebsites.net/movie/${APIid}/reviews`
-		);
-		// console.log(reviewsResponse.data[0].review_text)
-		// setRating(reviewsResponse.data[0].review_text);
 		
 		const response  = await axios.get(
 			`https://not-pirate-bay.azurewebsites.net/user/${email}/id`
@@ -93,7 +84,7 @@ export default function HoverRating(props) {
 
 	useEffect(() => {
 		fetching();
-	}, []);
+	});
 
 	return (
 		<>

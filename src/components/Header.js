@@ -4,7 +4,7 @@ import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/
 import "../App.css"; 
 
 function ProfileContent() {
-    const { instance, accounts } = useMsal();
+    const { accounts } = useMsal();
     const username = accounts[0] && accounts[0].name;
     const name = accounts[0] && accounts[0].username;
     fetch(`http://not-pirate-bay.azurewebsites.net/user/movie_list/${name}`)

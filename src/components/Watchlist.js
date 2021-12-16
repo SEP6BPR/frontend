@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 import "./TrendingMovies/MovieContent.css";
-import axios from "axios";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import MovieContent from "./TrendingMovies/MovieContent";
 import ListOfLists from "./ListOfLists";
@@ -18,14 +17,6 @@ export const Watchlist = () => {
   const handleInput = (e) => {
     setName(e.target.value);
   }
-  var dataSource = [];
-  const fetchLists = async () => {
-    const { data } = await axios.get(
-      `https://not-pirate-bay.azurewebsites.net/user/${username}/lists`
-    );
-    dataSource = data.list_ids;
-    console.log(dataSource);
-  };
 
   const createNewList = (e) => {
     fetch(`https://not-pirate-bay.azurewebsites.net/user/${username}/create_list/?list_name=${name}`, { method: "POST" })

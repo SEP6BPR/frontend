@@ -9,7 +9,6 @@ export const ListOfLists = () => {
     const username = accounts[0] && accounts[0].username;
     const [list, setList] = useState([]);
     let listNames = [];
-    //   let listArr = list.split(',');
 
     const fetchData = () => {
         axios
