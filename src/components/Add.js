@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { ResultCard } from "./ResultCard";
-import SingleContent from "./TrendingMovies/SingleContent";
+import MovieContent from "./TrendingMovies/MovieContent";
 import "./TrendingMovies/Trending.css";
 import { PagePagination } from "./TrendingMovies/PagePagination";
 
@@ -9,6 +9,7 @@ export const Add = () => {
   const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
   const [content, setContent] = useState([]);
+  //const [recomended, setRecomended] = useState([]);
   const [page, setPage] = useState(1);
 
   const onChange = (e) => {
@@ -23,6 +24,7 @@ export const Add = () => {
       .then((data) => {
         if (!data.errors) {
           // checking for errors
+          console.log(data);
           setResults(data.results);
         } else {
           setResults([]); // no results
@@ -31,18 +33,39 @@ export const Add = () => {
   };
 
   // trending movies on the main page
- const fetchTrendingMovies = async () => {
+  const fetchTrendingMovies = async () => {
     const { data } = await axios.get(
       `https://api.themoviedb.org/3/trending/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
     );
     // console.log(data);
 
+    // for (let index = 0; index < data.results.length; index++) {
+    //   let external_id = await axios.get(`https://api.themoviedb.org/3/movie/${data.results[index].id}/external_ids?api_key=${process.env.REACT_APP_TMDB_KEY}`)
+    //   //console.log(external_id.data.imdb_id)
+    //   external_id.data.imdb_id = external_id.data.imdb_id.slice(2, external_id.data.imdb_id.length).replace(/^0+/, '')
+
+    //   // data.results[index].id = external_id['imdb_id']
+    //   console.log(external_id.data.imdb_id)
+    // }
+    //console.log(data.results);
     setContent(data.results);
   };
 
+  // Recomended movies
+  // const fetchRecomendedMovies = async () => {
+  // 	const { data } = await axios.get(
+  // 		`https://api.themoviedb.org/3/recomended/movie/day?api_key=${process.env.REACT_APP_TMDB_KEY}&page=${page}`
+  // 	);
+  // 	// console.log(data);
+
+  // 	setRecomended(data.results);
+  // };
+
   useEffect(() => {
     fetchTrendingMovies();
-  });
+    //fetchRecomendedMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [page]);
 
   return (
     <div className="add-page">
@@ -68,11 +91,12 @@ export const Add = () => {
           )}
         </div>
       </div>
+
       <h2>Trending Movies</h2>
       <div className="trending">
         {content &&
           content.map((c) => (
-            <SingleContent
+            <MovieContent
               key={c.id}
               id={c.id}
               poster={c.poster_path}

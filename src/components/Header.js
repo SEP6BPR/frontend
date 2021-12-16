@@ -1,11 +1,10 @@
-
-import { Link } from 'react-router-dom'; 
+import { Link } from 'react-router-dom'; //move around and create navlinks
 import { PageLayout } from './PageLayout';
 import { AuthenticatedTemplate, UnauthenticatedTemplate, useMsal } from "@azure/msal-react";
 import "../App.css"; 
 
 function ProfileContent() {
-    const {accounts } = useMsal();
+    const { instance, accounts } = useMsal();
     const username = accounts[0] && accounts[0].name;
     const name = accounts[0] && accounts[0].username;
     fetch(`http://not-pirate-bay.azurewebsites.net/user/movie_list/${name}`)
@@ -33,7 +32,7 @@ export const Header = () => {
 
                     <ul className="nav-links">
                         <li>
-                            <Link to="./Watched">Watch List</Link>
+                            <Link to="/">Watch List</Link>
                         </li>
 
                         <li>

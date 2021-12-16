@@ -1,0 +1,191 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100&display=swap");
+
+.MovieModal_landscape {
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.MovieModal_portrait {
+  display: none;
+  object-fit: contain;
+  border-radius: 10px;
+}
+
+.tagline {
+  padding-bottom: 10px;
+  align-self: center;
+}
+
+.MovieModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  overflow-y: scroll;
+  scrollbar-width: none;
+}
+
+.MovieModal::-webkit-scrollbar {
+  display: none;
+}
+
+.MovieModal_about {
+  padding: 10px;
+  width: 95%;
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  justify-content: space-between;
+  font-weight: 300;
+}
+
+.MovieModal_title {
+  height: 50%;
+  font-size: 3vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+}
+
+.MovieModal_description {
+  display: flex;
+  height: 50%;
+  overflow-y: scroll;
+  padding: 15px;
+  border-radius: 5px;
+  scrollbar-width: thin; /* Firefox */
+  box-shadow: inset 0 0 3px #a85faa;
+  text-align: justify;
+}
+
+.MovieModal_description::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel_actors {
+  display: flex;
+}
+
+@media (min-width: 835px) {
+  .MovieModal_landscape {
+    display: none;
+  }
+  .MovieModal_portrait {
+    display: flex;
+    width: 25%;
+  }
+  .MovieModal {
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 0;
+  }
+  .MovieModal_about {
+    width: 58%;
+    padding: 0;
+    height: 70%;
+  }
+  .MovieModal_title {
+    font-size: 3.5vw;
+  }
+  .MovieModal_description {
+    font-size: 18px;
+    padding-bottom: 30%;
+  }
+}
+
+.MuiBackdrop-root {
+  z-index: -1;
+}
+
+.MovieModal_movieInf {
+  padding: 10px;
+}
+
+.MovieModal_user_comments {
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.MovieModal_review_title {
+  padding: 20px;
+}
+
+.MovieModal_write_review_title {
+  padding: 20px;
+}
+
+.all_user_comments {
+  display: flex;
+  height: 50%;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 15px;
+  border-radius: 5px;
+  scrollbar-width: thin; /* Firefox */
+  box-shadow: inset 0 0 3px #a85faa;
+  text-align: justify;
+}
+
+.single_user_comments {
+  scrollbar-width: none;
+  height: 50%;
+  width: 100%;
+  overflow-y: scroll;
+  padding: 15px;
+  border-radius: 5px;
+  scrollbar-width: thin; /* Firefox */
+  box-shadow: inset 0 0 3px #a85faa;
+  text-align: justify;
+}
+
+.username_with_stars {
+  display: flex;
+  text-align: justify;
+  flex-direction: row;
+  justify-content: space-between;
+
+  scrollbar-width: none;
+}
+
+.single_user_comments::-webkit-scrollbar {
+  display: none;
+}
+
+.button_addMovie {
+  background-color: #d14077;
+  border-radius: 8px;
+  border-style: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: inline-block;
+  font-family: "Haas Grot Text R Web", "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  height: 40px;
+  line-height: 20px;
+  list-style: none;
+  margin: 0;
+  outline: none;
+  padding: 10px 16px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: color 100ms;
+  vertical-align: baseline;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+}
+
+.button_addMovie:hover,
+.button_addMovie:focus {
+  background-color: #F082AC;
+}
+
+.button_div {
+  padding: 10px;
+}

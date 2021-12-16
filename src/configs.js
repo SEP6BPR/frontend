@@ -8,11 +8,15 @@ const IMAGE_BASE_URL = 'http://image.tmdb.org/t/p/';
 const IMAGE_300 = 'http://image.tmdb.org/t/p/w300';
 const IMAGE_500 = 'http://image.tmdb.org/t/p/w500';
 const UNAVAILABLE = 'https://movienewz.com/img/films/poster-holder.jpg';
+const UNAVAILABLELandscape = 'https://user-images.githubusercontent.com/10515204/56117400-9a911800-5f85-11e9-878b-3f998609a6c8.jpg';
 
 // Sizes: w300, w780, w1280, original
 const BACKDROP_SIZE = 'w1280';
 // w92, w154, w185, w342, w500, w780, original
 const POSTER_SIZE = 'w780';
+
+// for actors
+const NO_PICTURE = "https://upload.wikimedia.org/wikipedia/en/6/60/No_Picture.jpg";
 
 export {
     SEARCH_BASE_URL,
@@ -25,4 +29,6 @@ export {
     IMAGE_300,
     IMAGE_500,
     UNAVAILABLE,
+    UNAVAILABLELandscape,
+    NO_PICTURE,
   };
