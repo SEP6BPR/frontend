@@ -4,6 +4,7 @@ import Modal from "@mui/material/Modal";
 import Fade from "@mui/material/Fade";
 import Button from "@mui/material/Button";
 import { makeStyles } from "@material-ui/core";
+import { useMsal } from "@azure/msal-react";
 import {
 	IMAGE_500,
 	IMAGE_300,
@@ -51,6 +52,8 @@ export default function TransitionsModal({
 	crew,
 	member
 }) {
+	const { accounts } = useMsal();
+	const username = accounts[0] && accounts[0].username;
 	const classes = useStyles();
 	const [open, setOpen] = useState(false);
 	const [content, setContent] = useState();
@@ -66,7 +69,7 @@ export default function TransitionsModal({
 
 	const fetchData = async () => {
 		const { data } = await axios.get(
-			`https://api.themoviedb.org/3/${media_type}/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
+			`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
 		);
 		console.log(data);
 		setContent(data);
@@ -93,12 +96,16 @@ export default function TransitionsModal({
 		setCast(director.name);
 	};
 
-	// put to list
-	// const fetchToList = async (e) => {
-	// 	axios.post(`https://not-pirate-bay.azurewebsites.net/add_to_list/${list_id}/movie/${id}`);	
-
-
-	// };
+	const addToList = async (e) => {
+		console.log(id)
+		await axios.get(`https://not-pirate-bay.azurewebsites.net/user/${username}/lists`).then(
+			(list_response) => {
+				const list_id = list_response.data.list_id
+				console.log(list_id)
+				axios.post(`http://localhost:7071/add_to_list/${list_id}/movie/${id}`)
+			}
+		)	
+	};
 
 	useEffect(() => {
 		fetchData();
@@ -231,7 +238,7 @@ export default function TransitionsModal({
 										</div>
 
 										<div className="button_div">
-											<button className="button_addMovie">Add Movie To My List</button>
+											<button className="button_addMovie" onClick={addToList}>Add Movie To My List</button>
 										</div>
 									</div>
 									<span className="MovieModal_description">

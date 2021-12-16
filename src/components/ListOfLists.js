@@ -3,69 +3,58 @@ import { useMsal } from "@azure/msal-react";
 import axios from "axios";
 import "./ListOfLists.css";
 
-export const ListOfLists = () => {
+function MovieLists() {
 	const { accounts } = useMsal();
 	const username = accounts[0] && accounts[0].username;
-	const [list, setList] = useState([]);
-	let listNames = [];
+	const [name, setName] = useState("");
+	const [movieLists, setMovieLists] = useState([]);
 
 	const fetchData = () => {
-		axios
-			.get(`https://not-pirate-bay.azurewebsites.net/user/${username}/lists`)
+		axios.get(`https://not-pirate-bay.azurewebsites.net/user/${username}/lists`)
 			.then((response) => {
-				const res = response.data;
-				console.log(res);
-				setList(res);
+				console.log(response.data);
+				setMovieLists(response.data.list_ids);
 			})
 			.catch((error) => {
 				console.log(error);
 			});
-		// creatListMenu()
 	};
-	const creatListMenu = () => {
-		for (let i = 0; i < list.length; i++) {
-			console.log(listNames[i]);
-			listNames.push(<p>{listNames[i]}</p>);
-			return listNames;
-		}
-	};
-	// const ListItem = (props) => {
-	// 	<div>
-	// 		<p>List: {props.list_name}</p>
-	// 		<p>ListID: {props.list_id}</p>
-	// 	</div>;
-	// };
+	
+	const handleInput = (e) => {
+		setName(e.target.value);
+	  }
 
-	// function List(props) {
-    //     render() {
-    //         const data =[{"name":"test1"},{"name":"test2"}];
-    //         const listItems = data.map((d) => <li key={d.name}>{d.name}</li>);
-        
-    //         return (
-    //           <div>
-    //           {listItems }
-    //           </div>
-    //         );
-    //       }
-	// }
+	const createNewList = (e) => {
+		fetch(`https://not-pirate-bay.azurewebsites.net/user/${username}/create_list/?list_name=${name}`, { method: "POST" })
+	  }
 
 	useEffect(() => {
 		fetchData();
 	}, []);
 
 	return (
-		<div>
+		<>
 			<span>
 				<button onClick={fetchData}>update</button>
 			</span>
-			<select></select>
-			<div>
-				{
-                    
-                }
-			</div>
-		</div>
+			<span>
+                <input type="text"
+                  placeholder="new list"
+                  onChange={handleInput}
+                >
+                </input>
+                <button className="count-pill" onClick={createNewList}>
+                  Create new list
+                </button>
+              </span>
+			<h1>Movie Lists</h1>
+			<ul>
+				{movieLists.map((list) => (
+					<li key={list.list_id}>{list.list_name}</li>
+				))}
+			</ul>
+		</>
 	);
-};
+}
 
-export default ListOfLists;
+export default MovieLists;
