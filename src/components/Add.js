@@ -93,7 +93,7 @@ export const Add = () => {
 				</div>
 			</div>
 
-			<h2>Top 10 Movies</h2>
+			<h2>Top 10 popular Movies according to our users</h2>
 			<div className="trending">
 				  <Top10Movies></Top10Movies>
 			</div>
