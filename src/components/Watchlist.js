@@ -1,28 +1,20 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import "./TrendingMovies/MovieContent.css";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import MovieContent from "./TrendingMovies/MovieContent";
 import axios from "axios";
 
 export const Watchlist = () => {
-	const [name, setName] = useState("");
-	const [content] = useState([]);
 	const { accounts } = useMsal();
 	const username = accounts[0] && accounts[0].username;
 	const isAuthenticated = useIsAuthenticated();
 	const [results, setResults] = useState([]);
-	// const [listID, setListID] = useState();
 
-	const handleInput = (e) => {
-		setName(e.target.value);
-	};
 	let listID = 0
 
 	const movieIDs = async () => {
-		console.log(username);
 		await axios.get(`https://not-pirate-bay.azurewebsites.net/user/${username}/lists`).then((res) => {
 			const lists = res.data.lists;
-			console.log(lists);
 			for (let index = 0; index < lists.length; index++) {
 				if (lists[index].list_name === "Movie List") {
 					console.log(lists[index].list_id)
@@ -32,10 +24,7 @@ export const Watchlist = () => {
 		});
 
 		await axios.get(`https://not-pirate-bay.azurewebsites.net/movie_list/${listID}`).then((res) => {
-			console.log(res);
 			if (!res.errors) {
-				// checking for errors
-				// console.log(data);
 				setResults(res.data.movies);
 			} else {
 				setResults([]); // no results
@@ -43,13 +32,9 @@ export const Watchlist = () => {
 		});
 	};
 
-	// const movieData = async () => {
-		
-	// };
-
 	useEffect(() => {
 		movieIDs();
-		// movieData();
+
 	}, []);
 
 	return (

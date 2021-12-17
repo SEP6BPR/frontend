@@ -7,7 +7,7 @@ export const Top10Movies = () => {
 	const [results, setResults] = useState([]);
 
 	const movieIDs = async () => {
-		await axios.get(`http://localhost:7071/movies/top10`).then((res) => {
+		await axios.get(`https://not-pirate-bay.azurewebsites.net/movies/top10`).then((res) => {
 			console.log(res.data);
 			if (!res.errors) {
 				

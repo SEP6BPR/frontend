@@ -71,7 +71,7 @@ export default function TransitionsModal({
 		const { data } = await axios.get(
 			`https://api.themoviedb.org/3/movie/${id}?api_key=${process.env.REACT_APP_TMDB_KEY}&language=en-US`
 		);
-		console.log(data);
+		// console.log(data);
 		setContent(data);
 	};
 
