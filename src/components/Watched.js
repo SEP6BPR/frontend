@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import "./TrendingMovies/MovieContent.css";
 import { useIsAuthenticated, useMsal } from "@azure/msal-react";
 import MovieContent from "./TrendingMovies/MovieContent";
+import { ResultCard } from "./ResultCard";
 import axios from "axios";
 
-export const Watchlist = () => {
+export const Watched = () => {
 	const [name, setName] = useState("");
 	const [content] = useState([]);
 	const { accounts } = useMsal();
@@ -24,7 +25,7 @@ export const Watchlist = () => {
 			const lists = res.data.lists;
 			console.log(lists);
 			for (let index = 0; index < lists.length; index++) {
-				if (lists[index].list_name === "Movie List") {
+				if (lists[index].list_name === "Movies Watched") {
 					console.log(lists[index].list_id)
 					listID = lists[index].list_id;
 				}

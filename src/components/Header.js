@@ -20,13 +20,19 @@ export const Header = () => {
             <div className="container">
                 <div className="inner-content">
                     <div className="brand">
-                        <Link to="/Add" onClick={() => window.scroll(0, 0)}>(NOT) PirateBay</Link>
+                        <Link to="/" onClick={() => window.scroll(0, 0)}>(NOT) PirateBay</Link>
                     </div>
 
                     <ul className="nav-links">
                         <li>
-                            <Link to="/">Watch Lists</Link>
+                            <Link to="/watchlist">Watch Lists</Link>
+
                         </li>
+                        <li>
+                            <Link to="/watched">Movies Watched</Link>
+                            
+                        </li>
+
                         <span id="userDispaly">
                             <AuthenticatedTemplate>
                                 <ProfileContent/>

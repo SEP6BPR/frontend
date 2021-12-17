@@ -5,6 +5,7 @@ import { Add } from "./components/Add";
 import "./App.css";
 import "./lib/font-awesome/css/all.min.css";
 import { GlobalProvider } from "./context/GlobalState";
+import { Watched } from "./components/Watched";
 
 
 function App() {
@@ -15,11 +16,15 @@ function App() {
 
         <Switch>
           <Route exact path="/">
+            <Add />
+          </Route>
+
+          <Route exact path="/watchlist">
             <Watchlist />
           </Route>
 
-          <Route path="/add">
-            <Add />
+          <Route path="/watched">
+            <Watched />
           </Route>
 
           

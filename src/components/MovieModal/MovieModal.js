@@ -96,15 +96,39 @@ export default function TransitionsModal({
 		setCast(director.name);
 	};
 
-	const addToList = async (e) => {
-		console.log(id)
-		await axios.get(`https://not-pirate-bay.azurewebsites.net/user/${username}/lists`).then(
-			(list_response) => {
-				const list_id = list_response.data.list_id
-				console.log(list_id)
-				axios.post(`http://localhost:7071/add_to_list/${list_id}/movie/${id}`)
+	const addToMovieList = async (e) => {
+		
+		let listID = 0
+		await axios.get(`https://not-pirate-bay.azurewebsites.net/user/${username}/lists`).then((res) => {
+			const lists = res.data.lists;
+			console.log(lists);
+			for (let index = 0; index < lists.length; index++) {
+				if (lists[index].list_name === "Movie List") {
+					console.log(lists[index].list_id)
+					listID = lists[index].list_id;
+				}
 			}
-		)	
+		});
+
+		console.log(id)
+		await axios.post(`https://not-pirate-bay.azurewebsites.net/add_to_list/${listID}/movie/${id}`)
+	};
+
+	const addToMovieWatched = async (e) => {
+		
+		let listID = 0
+		await axios.get(`https://not-pirate-bay.azurewebsites.net/user/${username}/lists`).then((res) => {
+			const lists = res.data.lists;
+			console.log(lists);
+			for (let index = 0; index < lists.length; index++) {
+				if (lists[index].list_name === "Movies Watched") {
+					console.log(lists[index].list_id)
+					listID = lists[index].list_id;
+				}
+			}
+		});
+		console.log(id)
+		await axios.post(`https://not-pirate-bay.azurewebsites.net/add_to_list/${listID}/movie/${id}`)	
 	};
 
 	useEffect(() => {
@@ -238,7 +262,11 @@ export default function TransitionsModal({
 										</div>
 
 										<div className="button_div">
-											<button className="button_addMovie" onClick={addToList}>Add Movie To My List</button>
+											<button className="button_addMovie" onClick={addToMovieList}>Add Movie To Movie List</button>
+										</div>
+
+										<div className="button_div">
+											<button className="button_addMovie" onClick={addToMovieWatched}>Add Movie To Movies watched</button>
 										</div>
 									</div>
 									<span className="MovieModal_description">
